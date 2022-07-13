@@ -1,0 +1,42 @@
+.utility-button {
+  border: none;
+  box-shadow: 2px 2px 3px black;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 0 20px;
+  padding: 5px;
+  background-color: var(--utilityButton);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.basic-button {
+  border: none;
+  box-shadow: 1px 1px 2px black;
+  border-radius: 10px;
+  background-color: var(--basicButton);
+  font-size: 30px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.basic-button:hover {
+  background-color: #a148dd;
+}
+
+.equals {
+  grid-column: 3/5;
+  background-color: var(--equals);
+}
+
+.equals:hover {
+  background-color: #2e9e09;
+}
+
+.sci-button {
+  border: none;
+  box-shadow: 1px 1px 2px black;
+  border-radius: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}

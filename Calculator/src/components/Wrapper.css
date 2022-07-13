@@ -1,8 +1,0 @@
-.wrapper {
-  width: 340px;
-  height: 540px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 4px black;
-  background-image: linear-gradient(300deg, #e5c059, var(--wrapper));
-}

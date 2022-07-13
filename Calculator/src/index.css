@@ -2,10 +2,11 @@
 
 :root {
   --background: #3283c9d6;
-  --wrapper: #fbb034;
+  --basicWrapper: #fbb034;
   --screen: #ca9135;
+  --utilityButton: #837a89;
+  --basicButton: #b369e5;
   --equals: #48bc21;
-  --button: #b369e5;
   --text: #e6e0e6;
 }
 
