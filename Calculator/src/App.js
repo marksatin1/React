@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import Wrapper from './components/BasicCalc/Wrapper';
-import Screen from './components/BasicCalc/Screen';
-import ButtonBox from './components/BasicCalc/ButtonBox';
-import Button from './components/BasicCalc/Button';
+import Wrapper from './components/Wrapper';
+import Screen from './components/Screen';
+import ButtonBox from './components/ButtonBox';
+import Button from './components/Button';
 
-const utilBtnValues = ['Expand', 'History', 'Graph'];
+const utilBtnValues = ['Scientific', 'History'];
 
 const basicBtnValues = [
   ['C', '+-', '%', '/'],
@@ -41,20 +41,22 @@ const App = () => {
     num: 0,
     res: 0,
   });
-  const [expand, setExpand] = useState(false);
+  const [showSci, setShowSci] = useState(false);
+  const [showHist, setShowHist] = useState(false);
+  const [histRecord, setHistRecord] = useState([]);
 
   console.log(calc);
 
-  const expandClickHandler = () => {
-    setExpand((prev) => !prev);
+  const sciBtnClickHandler = () => {
+    setShowSci((prev) => !prev);
   };
 
-  const historyClickHandler = () => {
-    // showHistory state
+  const histBtnClickHandler = () => {
+    setShowHist((prev) => !prev);
   };
 
-  const graphClickHandler = () => {
-    // showGraph state
+  const clearBtnClickHandler = () => {
+    setHistRecord([]);
   };
 
   //CALC HANDLERS
@@ -100,6 +102,8 @@ const App = () => {
   };
 
   const equalsClickHandler = () => {
+    let newRes;
+
     if (calc.oper && calc.num) {
       setCalc((prev) => ({
         oper: '',
@@ -107,16 +111,25 @@ const App = () => {
         res:
           prev.num === '0' && prev.oper === '/'
             ? "Can't divide by 0"
-            : computeRes(prev.oper, Number(prev.res), Number(prev.num)),
+            : (newRes = computeRes(
+                prev.oper,
+                Number(prev.res),
+                Number(prev.num)
+              )),
       }));
+
+      setHistRecord((prev) => [
+        ...prev,
+        calc.res + ' ' + calc.oper + ' ' + calc.num + ' = ' + newRes,
+      ]);
     }
   };
 
   const signClickHandler = () => {
     setCalc((prev) => ({
-      oper: '',
+      oper: prev.oper,
       num: prev.num ? prev.num * -1 : 0, //Checks to prevent -0
-      res: prev.res ? prev.res * -1 : 0,
+      res: prev.res, //Did this mess anything up?
     }));
   };
 
@@ -191,7 +204,7 @@ const App = () => {
   return (
     <>
       <div className='windows'>
-        {expand && (
+        {showSci && (
           <Wrapper className={'sci-wrapper'}>
             {sciBtnValues.flat().map((btn, index) => {
               return (
@@ -233,11 +246,9 @@ const App = () => {
                   className={'utility-button'}
                   value={btn}
                   onClick={
-                    btn === 'Expand'
-                      ? expandClickHandler
-                      : btn === 'History'
-                      ? historyClickHandler
-                      : graphClickHandler
+                    btn === 'Scientific'
+                      ? sciBtnClickHandler
+                      : histBtnClickHandler
                   }
                 />
               );
@@ -272,6 +283,26 @@ const App = () => {
             })}
           </ButtonBox>
         </Wrapper>
+        {showHist && (
+          <Wrapper className={'history-wrapper'}>
+            <ButtonBox className={'history-box'}>
+              {histRecord.reverse().map((histCalc, index) => {
+                return (
+                  <span key={index}>
+                    {histCalc}
+                    <br />
+                    <br />
+                  </span>
+                );
+              })}
+            </ButtonBox>
+            <Button
+              className='clear-button'
+              value='Clear'
+              onClick={clearBtnClickHandler}
+            />
+          </Wrapper>
+        )}
       </div>
     </>
   );
