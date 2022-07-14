@@ -18,7 +18,7 @@ const basicBtnValues = [
 const sciBtnValues = [
   ['√', 'x^y', 'inv'],
   ['log', 'e', 'π'],
-  ['sin()', 'cos()', 'tan()'],
+  ['sin', 'cos', 'tan'],
 ];
 
 const removeSpaces = (num) => num.toString().replace(/\s/g, '');
@@ -190,56 +190,9 @@ const App = () => {
 
   return (
     <>
-      <Wrapper className={'basic-wrapper'}>
-        <Screen value={calc.num ? calc.num : calc.res} />
-        <ButtonBox className={'utility-button-box'}>
-          {utilBtnValues.map((btn, index) => {
-            return (
-              <Button
-                key={index}
-                className={'utility-button'}
-                value={btn}
-                onClick={
-                  btn === 'Expand'
-                    ? expandClickHandler
-                    : btn === 'History'
-                    ? historyClickHandler
-                    : graphClickHandler
-                }
-              />
-            );
-          })}
-        </ButtonBox>
-        <ButtonBox className={'basic-button-box'}>
-          {basicBtnValues.flat().map((btn, index) => {
-            return (
-              <Button
-                key={index}
-                className={btn === '=' ? 'basic-button equals' : 'basic-button'}
-                value={btn}
-                onClick={
-                  btn === 'C'
-                    ? resetClickHandler
-                    : btn === '+-'
-                    ? signClickHandler
-                    : btn === '%'
-                    ? percentClickHandler
-                    : btn === '/' || btn === '*' || btn === '-' || btn === '+'
-                    ? operatorClickHandler
-                    : btn === '.'
-                    ? decimalClickHandler
-                    : btn === '='
-                    ? equalsClickHandler
-                    : numClickHandler
-                }
-              />
-            );
-          })}
-        </ButtonBox>
-      </Wrapper>
-      {expand && (
-        <Wrapper className={'sci-wrapper'}>
-          <ButtonBox>
+      <div className='windows'>
+        {expand && (
+          <Wrapper className={'sci-wrapper'}>
             {sciBtnValues.flat().map((btn, index) => {
               return (
                 <Button
@@ -268,9 +221,58 @@ const App = () => {
                 />
               );
             })}
+          </Wrapper>
+        )}
+        <Wrapper className={'basic-wrapper'}>
+          <Screen value={calc.num ? calc.num : calc.res} />
+          <ButtonBox className={'utility-button-box'}>
+            {utilBtnValues.map((btn, index) => {
+              return (
+                <Button
+                  key={index}
+                  className={'utility-button'}
+                  value={btn}
+                  onClick={
+                    btn === 'Expand'
+                      ? expandClickHandler
+                      : btn === 'History'
+                      ? historyClickHandler
+                      : graphClickHandler
+                  }
+                />
+              );
+            })}
+          </ButtonBox>
+          <ButtonBox className={'basic-button-box'}>
+            {basicBtnValues.flat().map((btn, index) => {
+              return (
+                <Button
+                  key={index}
+                  className={
+                    btn === '=' ? 'basic-button equals' : 'basic-button'
+                  }
+                  value={btn}
+                  onClick={
+                    btn === 'C'
+                      ? resetClickHandler
+                      : btn === '+-'
+                      ? signClickHandler
+                      : btn === '%'
+                      ? percentClickHandler
+                      : btn === '/' || btn === '*' || btn === '-' || btn === '+'
+                      ? operatorClickHandler
+                      : btn === '.'
+                      ? decimalClickHandler
+                      : btn === '='
+                      ? equalsClickHandler
+                      : numClickHandler
+                  }
+                />
+              );
+            })}
           </ButtonBox>
         </Wrapper>
-      )}
+      </div>
     </>
   );
 };

@@ -10,6 +10,11 @@
   cursor: pointer;
 }
 
+.utility-button:hover {
+  color: #000000;
+  background-color: #a29a9a;
+}
+
 .basic-button {
   border: none;
   box-shadow: 1px 1px 2px black;
@@ -37,6 +42,7 @@
   border: none;
   box-shadow: 1px 1px 2px black;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 26px;
   cursor: pointer;
+  background-color: var(--basicWrapper);
 }

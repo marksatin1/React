@@ -23,3 +23,9 @@ body {
   justify-content: center;
   background-image: linear-gradient(330deg, #b369e5 10%, var(--background) 65%);
 }
+
+.windows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
