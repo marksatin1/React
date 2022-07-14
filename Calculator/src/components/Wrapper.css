@@ -19,15 +19,40 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 10px;
-  animation: appear 1s forwards;
+  animation: appear-top 1s forwards;
 }
 
-@keyframes appear {
+@keyframes appear-top {
   from {
     opacity: 0;
   }
   to {
-    transform: translateY(-140px);
+    transform: translateY(-145px);
+    opacity: 1;
+  }
+}
+
+.history-wrapper {
+  position: absolute;
+  width: 300px;
+  height: 160px;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: -2px 2px 4px black;
+  background-color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  animation: appear-bottom 1s forwards;
+}
+
+@keyframes appear-bottom {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateY(600px);
     opacity: 1;
   }
 }
