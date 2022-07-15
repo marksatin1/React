@@ -1,0 +1,14 @@
+.wrapper {
+  position: relative;
+  width: 375px; /* iPhone SE dimensions */
+  height: 667px;
+  border: 3px solid #09aa71;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px black;
+  overflow-y: scroll;
+}
+
+#search-bar {
+  margin: 20px 0;
+}
