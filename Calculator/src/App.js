@@ -202,109 +202,105 @@ const App = () => {
   };
 
   return (
-    <>
-      <div className='windows'>
-        {showSci && (
-          <Wrapper className={'sci-wrapper'}>
-            {sciBtnValues.flat().map((btn, index) => {
-              return (
-                <Button
-                  key={index}
-                  className={'sci-button'}
-                  value={btn}
-                  onClick={
-                    btn === '√'
-                      ? sqRootClickHandler
-                      : btn === 'x^y'
-                      ? operatorClickHandler
-                      : btn === 'inv'
-                      ? inverseClickHandler
-                      : btn === 'log'
-                      ? logClickHandler
-                      : btn === 'e'
-                      ? numClickHandler
-                      : btn === 'π'
-                      ? numClickHandler
-                      : btn === 'sin()'
-                      ? sinClickHandler
-                      : btn === 'cos()'
-                      ? cosClickHandler
-                      : tanClickHandler
-                  }
-                />
-              );
-            })}
-          </Wrapper>
-        )}
-        <Wrapper className={'basic-wrapper'}>
-          <Screen value={calc.num ? calc.num : calc.res} />
-          <ButtonBox className={'utility-button-box'}>
-            {utilBtnValues.map((btn, index) => {
-              return (
-                <Button
-                  key={index}
-                  className={'utility-button'}
-                  value={btn}
-                  onClick={
-                    btn === 'Scientific'
-                      ? sciBtnClickHandler
-                      : histBtnClickHandler
-                  }
-                />
-              );
-            })}
-          </ButtonBox>
-          <ButtonBox className={'basic-button-box'}>
-            {basicBtnValues.flat().map((btn, index) => {
-              return (
-                <Button
-                  key={index}
-                  className={
-                    btn === '=' ? 'basic-button equals' : 'basic-button'
-                  }
-                  value={btn}
-                  onClick={
-                    btn === 'C'
-                      ? resetClickHandler
-                      : btn === '+-'
-                      ? signClickHandler
-                      : btn === '%'
-                      ? percentClickHandler
-                      : btn === '/' || btn === '*' || btn === '-' || btn === '+'
-                      ? operatorClickHandler
-                      : btn === '.'
-                      ? decimalClickHandler
-                      : btn === '='
-                      ? equalsClickHandler
-                      : numClickHandler
-                  }
-                />
-              );
-            })}
-          </ButtonBox>
+    <div className='windows'>
+      {showSci && (
+        <Wrapper className={'sci-wrapper'}>
+          {sciBtnValues.flat().map((btn, index) => {
+            return (
+              <Button
+                key={index}
+                className={'sci-button'}
+                value={btn}
+                onClick={
+                  btn === '√'
+                    ? sqRootClickHandler
+                    : btn === 'x^y'
+                    ? operatorClickHandler
+                    : btn === 'inv'
+                    ? inverseClickHandler
+                    : btn === 'log'
+                    ? logClickHandler
+                    : btn === 'e'
+                    ? numClickHandler
+                    : btn === 'π'
+                    ? numClickHandler
+                    : btn === 'sin()'
+                    ? sinClickHandler
+                    : btn === 'cos()'
+                    ? cosClickHandler
+                    : tanClickHandler
+                }
+              />
+            );
+          })}
         </Wrapper>
-        {showHist && (
-          <Wrapper className={'history-wrapper'}>
-            <ButtonBox className={'history-box'}>
-              {histRecord.reverse().map((histCalc, index) => {
-                return (
-                  <span key={index}>
-                    {histCalc}
-                    <br />
-                    <br />
-                  </span>
-                );
-              })}
-            </ButtonBox>
-            <Button
-              className='clear-button'
-              value='Clear'
-              onClick={clearBtnClickHandler}
-            />
-          </Wrapper>
-        )}
-      </div>
-    </>
+      )}
+      <Wrapper className={'basic-wrapper'}>
+        <Screen value={calc.num ? calc.num : calc.res} />
+        <ButtonBox className={'utility-button-box'}>
+          {utilBtnValues.map((btn, index) => {
+            return (
+              <Button
+                key={index}
+                className={'utility-button'}
+                value={btn}
+                onClick={
+                  btn === 'Scientific'
+                    ? sciBtnClickHandler
+                    : histBtnClickHandler
+                }
+              />
+            );
+          })}
+        </ButtonBox>
+        <ButtonBox className={'basic-button-box'}>
+          {basicBtnValues.flat().map((btn, index) => {
+            return (
+              <Button
+                key={index}
+                className={btn === '=' ? 'basic-button equals' : 'basic-button'}
+                value={btn}
+                onClick={
+                  btn === 'C'
+                    ? resetClickHandler
+                    : btn === '+-'
+                    ? signClickHandler
+                    : btn === '%'
+                    ? percentClickHandler
+                    : btn === '/' || btn === '*' || btn === '-' || btn === '+'
+                    ? operatorClickHandler
+                    : btn === '.'
+                    ? decimalClickHandler
+                    : btn === '='
+                    ? equalsClickHandler
+                    : numClickHandler
+                }
+              />
+            );
+          })}
+        </ButtonBox>
+      </Wrapper>
+      {showHist && (
+        <Wrapper className={'history-wrapper'}>
+          <ButtonBox className={'history-box'}>
+            {histRecord.reverse().map((histCalc, index) => {
+              return (
+                <span key={index}>
+                  {histCalc}
+                  <br />
+                  <br />
+                </span>
+              );
+            })}
+          </ButtonBox>
+          <Button
+            className='clear-button'
+            value='Clear'
+            onClick={clearBtnClickHandler}
+          />
+        </Wrapper>
+      )}
+    </div>
   );
 };
 
