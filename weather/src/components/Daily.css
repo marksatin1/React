@@ -1,0 +1,15 @@
+.daily {
+  width: 100%;
+  height: auto;
+  overflow-y: scroll;
+  border-radius: 10px;
+  margin: 30px 0;
+  padding: 20px;
+  border: none;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+}
