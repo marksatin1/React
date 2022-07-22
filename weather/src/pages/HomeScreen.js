@@ -6,13 +6,14 @@ import Window from '../components/Window';
 import Footer from '../components/Footer';
 
 import { dtToUsTime, uvDescriber } from '../helpers/Helpers';
+import sunset from '../assets/weather-icons/sunset.png';
 
 const HomeScreen = ({ weatherData, setShowSearchWindow }) => {
   return (
     <Wrapper className={'main-wrapper'}>
       <Wrapper className={'content-wrapper'}>
         <Current crntWeather={weatherData.crnt} />
-        <Hourly hrlyWeather={weatherData.hrly} />
+        <Hourly weatherData={weatherData} />
         <Daily dailyWeather={weatherData.daily} />
         <Wrapper className={'window-wrapper'}>
           <Window className='window-small' title='UV Index'>
@@ -23,9 +24,9 @@ const HomeScreen = ({ weatherData, setShowSearchWindow }) => {
             </div>
           </Window>
           <Window className='window-small' title='Sunset'>
-            <h4>{dtToUsTime(weatherData.crnt.sunset)}</h4>
-            <img src='' alt='Sunset' />
-            <p>Sunrise: {dtToUsTime(weatherData.crnt.sunrise)}</p>
+            {/* <h4>{dtToUsTime(weatherData.daily.sunset.time)}</h4> */}
+            <img src={sunset} alt='Sunset' />
+            {/* <p>Sunrise: {dtToUsTime(weatherData.daily.sunrise.time)}</p> */}
           </Window>
           <Window className='window-small' title='Feels Like'>
             <h4>{weatherData.crnt.feels}&#176;</h4>

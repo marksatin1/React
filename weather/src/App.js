@@ -37,41 +37,50 @@ const App = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        const { data } = response;
+        // console.log(data);
         let hourlyData = [],
           dailyData = [];
 
         for (let hour = 0; hour < 24; hour++) {
           hourlyData.push({
-            time: response.data.hourly[hour].dt,
-            icon: response.data.hourly[hour].weather[0].icon,
-            temp: Math.round(response.data.hourly[hour].temp),
+            time: data.hourly[hour].dt,
+            icon: data.hourly[hour].weather[0].icon,
+            temp: Math.round(data.hourly[hour].temp),
           });
         }
 
-        for (let day in response.data.daily) {
+        for (let day in data.daily) {
           dailyData.push({
-            day: response.data.daily[day].dt,
-            icon: response.data.daily[day].weather[0].icon,
-            low: Math.round(response.data.daily[day].temp.min),
-            high: Math.round(response.data.daily[day].temp.max),
+            day: data.daily[day].dt,
+            icon: data.daily[day].weather[0].icon,
+            low: Math.round(data.daily[day].temp.min),
+            high: Math.round(data.daily[day].temp.max),
+            sunrise: {
+              time: data.daily[day].sunrise,
+              icon: 'sunrise',
+              temp: 'SUNRISE',
+            },
+            sunset: {
+              time: data.daily[day].sunset,
+              icon: 'sunset',
+              temp: 'SUNSET',
+            },
           });
         }
 
         setWeatherData({
           crnt: {
-            crntTemp: Math.round(response.data.current.temp),
-            descrip: response.data.current.weather[0].main,
+            crntTemp: Math.round(data.current.temp),
+            descrip: data.current.weather[0].main,
             low: dailyData[0].low,
             high: dailyData[0].high,
-            uvi: Math.round(response.data.current.uvi),
-            sunset: response.data.current.sunset,
-            sunrise: response.data.current.sunrise,
-            feels: Math.round(response.data.current.feels_like),
-            humidity: response.data.current.humidity,
-            dew: Math.round(response.data.current.dew_point),
-            vis: visConverter(response.data.current.visibility),
-            pressure: response.data.current.pressure,
+            uvi: Math.round(data.current.uvi),
+            feels: Math.round(data.current.feels_like),
+            humidity: data.current.humidity,
+            dew: Math.round(data.current.dew_point),
+            vis: visConverter(data.current.visibility),
+            pressure: data.current.pressure,
           },
           hrly: hourlyData,
           daily: dailyData,
