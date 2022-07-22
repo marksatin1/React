@@ -6,16 +6,24 @@
 }
 
 .window-small {
-  height: 100px;
+  position: relative;
   margin: 5px 0;
   padding: 10px;
   border-radius: 15px;
   background-color: rgba(240, 248, 255, 0.7);
 }
 
+.window-small img {
+  width: 75px;
+  height: 75px;
+  margin: 10px 0;
+}
+
 .window-small p {
+  position: absolute;
+  bottom: 0;
   font-size: 12px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .title {
