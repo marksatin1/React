@@ -1,23 +1,26 @@
+import Window from './Window';
+
 import { dtToHour, codeToImage } from '../helpers/Helpers';
 
 import './Hourly.css';
 
 const Hourly = ({ hrlyWeather }) => {
   return (
-    <div>
-      <p>Hourly Forecast</p>
-      <div className='hourly'>
+    <Window className='window-large' title='Hourly Forecast'>
+      <div className='hours'>
         {hrlyWeather.map((hour) => {
           return (
             <div key={hour.time} className='hour'>
-              <h4>{hour === hrlyWeather[0] ? 'Now' : dtToHour(hour.time)}</h4>
+              <p className='time'>
+                {hour === hrlyWeather[0] ? 'Now' : dtToHour(hour.time)}
+              </p>
               <img src={codeToImage(hour.icon)} alt={hour.icon} />
-              <h4>{hour.temp}&#176;</h4>
+              <p className='temp'>{hour.temp}&#176;</p>
             </div>
           );
         })}
       </div>
-    </div>
+    </Window>
   );
 };
 

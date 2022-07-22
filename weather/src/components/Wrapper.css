@@ -6,6 +6,7 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px black;
+  background-color: white;
 }
 
 .content-wrapper {
@@ -13,16 +14,12 @@
   overflow-y: scroll;
 }
 
-.small-box-wrapper {
+.window-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 10px;
   margin-bottom: 50px;
-}
-
-.small-box {
-  border-radius: 10px;
-  border: 1px solid black;
 }
 
 #search-bar {

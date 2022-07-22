@@ -5,6 +5,7 @@
   left: 0;
   right: 0;
   padding: 10px;
+  border-radius: 0 0 15px 15px;
   display: grid;
   grid-template-columns: repeat(3, 33%);
   justify-items: center;

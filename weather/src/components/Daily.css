@@ -1,15 +1,24 @@
-.daily {
-  width: 100%;
-  height: auto;
+.days {
   overflow-y: scroll;
   border-radius: 10px;
-  margin: 30px 0;
-  padding: 20px;
-  border: none;
+  padding: 0 10px;
 }
 
 .day {
+  border-top: 1px solid dodgerblue;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
+}
+
+.day img {
+  width: 50px;
+}
+
+.meter {
+  display: flex;
+}
+
+.meter p {
+  margin: 0 5px;
 }

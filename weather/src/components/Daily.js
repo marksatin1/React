@@ -1,23 +1,28 @@
+import Window from './Window';
+
 import { dtToDay, codeToImage } from '../helpers/Helpers';
 
 import './Daily.css';
 
 const Daily = ({ dailyWeather }) => {
   return (
-    <div className='daily'>
-      <p>7 Day Forecast</p>
-      {dailyWeather.map((day) => {
-        return (
-          <div key={day.day} className='day'>
-            <h4>{day === dailyWeather[0] ? 'Today' : dtToDay(day.day)}</h4>
-            <img src={codeToImage(day.icon)} alt='day.icon' />
-            <label htmlFor='daily-meter'>{day.low}&#176;</label>
-            <meter id='daily-meter'></meter>
-            <label htmlFor='daily-meter'>{day.high}&#176;</label>
-          </div>
-        );
-      })}
-    </div>
+    <Window className='window-large' title='7 Day Forecast'>
+      <div className='days'>
+        {dailyWeather.map((day) => {
+          return (
+            <div key={day.day} className='day'>
+              <p>{day === dailyWeather[0] ? 'Today' : dtToDay(day.day)}</p>
+              <img src={codeToImage(day.icon)} alt='day.icon' />
+              <div className='meter'>
+                <p>{day.low}&#176;</p>
+                <meter id='daily-meter'></meter>
+                <p>{day.high}&#176;</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Window>
   );
 };
 

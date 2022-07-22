@@ -32,6 +32,7 @@ const App = () => {
           lat: searchSettings.lat,
           lon: searchSettings.lon,
           units: searchSettings.units,
+          exclude: 'minutely',
           appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
         },
       })
@@ -68,6 +69,7 @@ const App = () => {
             sunrise: response.data.current.sunrise,
             feels: Math.round(response.data.current.feels_like),
             humidity: response.data.current.humidity,
+            dew: Math.round(response.data.current.dew_point),
             vis: visConverter(response.data.current.visibility),
             pressure: response.data.current.pressure,
           },
