@@ -6,7 +6,7 @@ import Window from '../components/Window';
 import Footer from '../components/Footer';
 
 import { dtToUsTime, uvDescriber } from '../helpers/Helpers';
-import sunset from '../assets/weather-icons/sunset.png';
+import sunsetIcon from '../assets/weather-icons/sunset.png';
 
 const HomeScreen = ({ weatherData, setShowSearchWindow }) => {
   return (
@@ -24,9 +24,9 @@ const HomeScreen = ({ weatherData, setShowSearchWindow }) => {
             </div>
           </Window>
           <Window className='window-small' title='Sunset'>
-            {/* <h4>{dtToUsTime(weatherData.daily.sunset.time)}</h4> */}
-            <img src={sunset} alt='Sunset' />
-            {/* <p>Sunrise: {dtToUsTime(weatherData.daily.sunrise.time)}</p> */}
+            <h4>{dtToUsTime(weatherData.crnt.sunsetTime)}</h4>
+            <img src={sunsetIcon} alt='Sunset' />
+            <p>Sunrise: {dtToUsTime(weatherData.crnt.sunriseTime)}</p>
           </Window>
           <Window className='window-small' title='Feels Like'>
             <h4>{weatherData.crnt.feels}&#176;</h4>

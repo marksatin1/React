@@ -75,6 +75,8 @@ const App = () => {
             descrip: data.current.weather[0].main,
             low: dailyData[0].low,
             high: dailyData[0].high,
+            sunriseTime: data.current.sunrise,
+            sunsetTime: data.current.sunset,
             uvi: Math.round(data.current.uvi),
             feels: Math.round(data.current.feels_like),
             humidity: data.current.humidity,
