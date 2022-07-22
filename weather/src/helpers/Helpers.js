@@ -10,6 +10,8 @@ import n10 from '../assets/weather-icons/10n.png';
 import b11 from '../assets/weather-icons/11.png';
 import b13 from '../assets/weather-icons/13.png';
 import b50 from '../assets/weather-icons/50.png';
+import sunrise from '../assets/weather-icons/sunrise.png';
+import sunset from '../assets/weather-icons/sunset.png';
 
 export const dtToHour = (datetime) => {
   let hour = new Date(datetime * 1000).getHours();
@@ -58,7 +60,11 @@ export const codeToImage = (iconCode) => {
       ? b11
       : iconCode === '13d' || iconCode === '13n'
       ? b13
-      : b50;
+      : iconCode === '50d' || iconCode === '50n'
+      ? b50
+      : iconCode === 'sunrise'
+      ? sunrise
+      : sunset;
   return icon;
 };
 
