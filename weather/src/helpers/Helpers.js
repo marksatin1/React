@@ -15,7 +15,7 @@ export const dtToHour = (datetime) => {
   let hour = new Date(datetime * 1000).getHours();
   let usHour = ((hour + 11) % 12) + 1;
   let suffix = hour >= 12 ? 'PM' : 'AM';
-  return usHour + ' ' + suffix;
+  return usHour + suffix;
 };
 
 export const dtToUsTime = (datetime) => {
@@ -78,11 +78,8 @@ export const uvDescriber = (rating) => {
   return uvDescrip;
 };
 
-export const visConverter = (distance) => {
-  let ftDist = Math.round(distance * 3.281);
-  let vis =
-    ftDist >= 10000
-      ? '10,000'
-      : String(ftDist).slice(0, -3) + ',' + String(ftDist).slice(-3);
+export const visConverter = (meterDist) => {
+  let miles = Math.round(meterDist * 0.000621371);
+  let vis = miles >= 10 ? 10 : miles;
   return vis;
 };
